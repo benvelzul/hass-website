@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HASS 9E Unit 4</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#D96B43',
+                        midtone: '#DDAB09',
+                        basebg: '#F7F2EB',
+                        secondary: '#0B5D67',
+                        darktext: '#221E1D',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F7F2EB;
+            color: #221E1D;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F7F2EB;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D96B43;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-basebg text-darktext antialiased selection:bg-primary selection:text-white">
+
+    <!-- 1. Sticky Transparent Navbar -->
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent py-4 px-6 md:px-12">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <a href="#hero" class="text-xl font-bold tracking-tight text-darktext flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-primary inline-block"></span>
+                <span>HASS 9E Unit 4</span>
+            </a>
+            <nav class="hidden md:flex items-center gap-8 font-medium text-sm">
+                <a href="#hero" class="hover:text-primary transition-colors">Home</a>
+                <a href="#location" class="hover:text-primary transition-colors">Location</a>
+                <a href="#reasons" class="hover:text-primary transition-colors">Reasons</a>
+                <a href="#why" class="hover:text-primary transition-colors">Why Us</a>
+                <a href="#culture" class="hover:text-primary transition-colors">Culture</a>
+                <a href="#text-section" class="hover:text-primary transition-colors">Vision</a>
+            </nav>
+            <div class="flex items-center gap-4">
+                <a href="#location" class="hidden sm:inline-block bg-primary hover:bg-[#b85633] text-white px-5 py-2.5 rounded-full text-sm font-semibold shadow-md transition-all transform hover:-translate-y-0.5">
+                    Sign up
+                </a>
+                <!-- Mobile menu toggle button -->
+                <button id="menu-btn" class="md:hidden text-darktext focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile dropdown menu -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 right-0 bg-[#F7F2EB] shadow-lg border-b border-[#e2d8cc] py-4 px-6 flex flex-col gap-4 font-medium text-sm">
+            <a href="#hero" class="mobile-link hover:text-primary transition-colors">Home</a>
+            <a href="#location" class="mobile-link hover:text-primary transition-colors">Location</a>
+            <a href="#reasons" class="mobile-link hover:text-primary transition-colors">Reasons</a>
+            <a href="#why" class="mobile-link hover:text-primary transition-colors">Why Us</a>
+            <a href="#culture" class="mobile-link hover:text-primary transition-colors">Culture</a>
+            <a href="#text-section" class="mobile-link hover:text-primary transition-colors">Vision</a>
+        </div>
+    </header>
+
+    <!-- 2. Hero Section (#hero) -->
+    <section id="hero" class="relative min-h-screen pt-24 pb-12 px-6 md:px-12 flex flex-col justify-between max-w-7xl mx-auto">
+        <!-- Text & Heading Header -->
+        <div class="text-center max-w-3xl mx-auto mt-4 mb-6">
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-darktext leading-tight mb-4">
+                Exploring Seville
+            </h1>
+            <p class="text-lg text-darktext/70 mb-6 max-w-xl mx-auto">
+                The starting line of the <em>Discovery Age</em>
+            </p>
+            <a href="#location" class="inline-block bg-primary hover:bg-[#b85633] text-white font-semibold px-8 py-3.5 rounded-full shadow-lg transition-all transform hover:-translate-y-1">
+                Explore Location
+            </a>
+        </div>
+
+        <!-- Image placeholder consuming at least 2/3 of the hero section height -->
+        <div class="w-full flex-1 min-h-[50vh] md:min-h-[60vh] rounded-3xl overflow-hidden shadow-2xl relative border border-white/40">
+            <img src="https://placehold.co/1400x900/0B5D67/F7F2EB?text=Hero+Immersive+Landscape" alt="Hero Section Placeholder" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700" onerror="this.src='https://placehold.co/1200x800/221E1D/F7F2EB?text=Placeholder+Image'">
+            <div class="absolute inset-0 bg-gradient-to-t from-darktext/40 via-transparent to-transparent flex items-end p-8">
+                <div class="text-white">
+                    <span class="text-xs uppercase tracking-wider bg-primary px-3 py-1 rounded-full font-semibold">Featured Destination</span>
+                    <h3 class="text-xl md:text-2xl font-bold mt-2">Harmonic Campus Alpha, Global Hub</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Location Section (#location) -->
+    <section id="location" class="py-20 px-6 md:px-12 bg-[#efe7db] border-y border-[#e2d8cc]">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <!-- Left hand side: Text -->
+            <div class="space-y-6">
+                <div class="inline-flex items-center gap-2 bg-secondary/10 text-secondary px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
+                    Tourism Form
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-darktext">
+                    What is <em>Dark Tourism</em>?
+                </h2>
+                <p class="text-darktext/80 leading-relaxed text-base md:text-lg">
+                    Tourism has many forms, this trip will be focusing on dark tourism. Dark tourism is mainly in places that commemorate and remember disasters or tragedies. But the place where we are going is not a sad place; it marks the start of the age of discovery and what consequences arrived with it. 
+                </p>
+            </div>
+
+            <!-- Right hand side: Map / Interactive Placeholder -->
+            <div class="w-full h-[400px] md:h-[450px] rounded-3xl overflow-hidden shadow-xl bg-white relative border-4 border-white flex flex-col items-center justify-center">
+                <img src="https://placehold.co/800x600/0B5D67/F7F2EB?text=Interactive+Map+Placeholder" alt="Location Map Placeholder" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x600/221E1D/F7F2EB?text=Map+Unavailable'">
+            </div>
+        </div>
+    </section>
+
+    <section id="location" class="py-20 px-6 md:px-12 bg-[#efe7db] border-y border-[#e2d8cc]">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <!-- left hand side: image  -->
+            <div class="w-full h-[400px] md:h-[450px] rounded-3xl overflow-hidden shadow-xl bg-white relative border-4 border-white flex flex-col items-center justify-center">
+                <img src="https://placehold.co/800x600/0B5D67/F7F2EB?text=Interactive+Map+Placeholder" alt="Location Map Placeholder" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x600/221E1D/F7F2EB?text=Map+Unavailable'">
+                <div class="absolute bottom-6 left-6 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-lg border border-[#e2d8cc] max-w-xs">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold">📍</div>
+                        <div>
+                            <h4 class="font-bold text-sm text-darktext">Primary Hub Center</h4>
+                            <p class="text-xs text-darktext/70">100 Innovation Avenue, District 4</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- right hand side hand side: Text -->
+            <div class="space-y-6">
+                <div class="inline-flex items-center gap-2 bg-secondary/10 text-secondary px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
+                    Tourist Location
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-darktext">
+                    What is this place and what history is behind it? 
+                </h2>
+                <p class="text-darktext/80 leading-relaxed text-base md:text-lg">
+                    The city of Seville is the place where Cristopher Columbus started his journey to later discover The Americas (now named North and South America). And where Ferdinand Magellan commenced his voyage of 5 ships to do the first circumnavigation and found a way to pass through The Americas and come back to Spain. Christopher Colombus was one of the greatest explorers of all time, discovering The Americas and conquering it. He lies in the Cathedral of Seville and the legend states that the restless ghost of Christopher Colombus is still roaming through the city. One of the most common sites in Seville is Muelle de las Mulas (Mules’ Wharf) which is the exact dock where Magellan never came back. Later Elcano (his vice captain) came back to Spain marking the first circumnavigation of the world. 
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Reasons Section (#reasons) - Zigzag layout with 4-5 bullet points -->
+    <section id="reasons" class="py-24 px-6 md:px-12 max-w-7xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+            <span class="text-xs uppercase tracking-wider text-primary font-bold bg-primary/10 px-3 py-1 rounded-full">Core Pillars</span>
+            <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-darktext mt-3">
+                Why Choose Our Ecosystem
+            </h2>
+            <p class="text-darktext/70 mt-2">Designed from the ground up to elevate productivity and foster deep community bonding.</p>
+        </div>
+
+        <div class="space-y-12">
+            <!-- Reason 1: Right start / standard flow or alternating -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-white p-8 md:p-10 rounded-3xl shadow-sm border border-[#e2d8cc] hover:shadow-md transition-shadow">
+                <div class="order-2 md:order-1 space-y-4">
+                    <span class="text-4xl font-extrabold text-midtone">01</span>
+                    <h3 class="text-2xl font-bold text-darktext">Unmatched Architectural Flow</h3>
+                    <p class="text-darktext/70 leading-relaxed">
+                        Spaces are engineered with acoustic panels, abundant natural sunlight, and ergonomic layouts to maintain peak focus throughout the day.
+                    </p>
+                </div>
+                <div class="order-1 md:order-2 h-64 rounded-2xl overflow-hidden bg-basebg border border-[#e2d8cc]">
+                    <img src="https://placehold.co/600x400/D96B43/F7F2EB?text=Pillar+1" alt="Reason 1" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x400/221E1D/F7F2EB?text=Placeholder'">
+                </div>
+            </div>
+
+            <!-- Reason 2 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-white p-8 md:p-10 rounded-3xl shadow-sm border border-[#e2d8cc] hover:shadow-md transition-shadow">
+                <div class="h-64 rounded-2xl overflow-hidden bg-basebg border border-[#e2d8cc]">
+                    <img src="https://placehold.co/600x400/0B5D67/F7F2EB?text=Pillar+2" alt="Reason 2" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x400/221E1D/F7F2EB?text=Placeholder'">
+                </div>
+                <div class="space-y-4">
+                    <span class="text-4xl font-extrabold text-secondary">02</span>
+                    <h3 class="text-2xl font-bold text-darktext">Sustainable & Eco-Friendly Materials</h3>
+                    <p class="text-darktext/70 leading-relaxed">
+                        Every furnishing and structural element complies with rigorous green certifications, ensuring minimal environmental footprint.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Reason 3 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-white p-8 md:p-10 rounded-3xl shadow-sm border border-[#e2d8cc] hover:shadow-md transition-shadow">
+                <div class="order-2 md:order-1 space-y-4">
+                    <span class="text-4xl font-extrabold text-midtone">03</span>
+                    <h3 class="text-2xl font-bold text-darktext">Integrated Smart Technology</h3>
+                    <p class="text-darktext/70 leading-relaxed">
+                        High-speed redundant fiber internet, automated climate control, and frictionless access control put convenience at your fingertips.
+                    </p>
+                </div>
+                <div class="order-1 md:order-2 h-64 rounded-2xl overflow-hidden bg-basebg border border-[#e2d8cc]">
+                    <img src="https://placehold.co/600x400/DDAB09/F7F2EB?text=Pillar+3" alt="Reason 3" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x400/221E1D/F7F2EB?text=Placeholder'">
+                </div>
+            </div>
+
+            <!-- Reason 4 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-white p-8 md:p-10 rounded-3xl shadow-sm border border-[#e2d8cc] hover:shadow-md transition-shadow">
+                <div class="h-64 rounded-2xl overflow-hidden bg-basebg border border-[#e2d8cc]">
+                    <img src="https://placehold.co/600x400/221E1D/F7F2EB?text=Pillar+4" alt="Reason 4" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x400/221E1D/F7F2EB?text=Placeholder'">
+                </div>
+                <div class="space-y-4">
+                    <span class="text-4xl font-extrabold text-primary">04</span>
+                    <h3 class="text-2xl font-bold text-darktext">Thriving Collaborative Network</h3>
+                    <p class="text-darktext/70 leading-relaxed">
+                        Connect with industry leaders, founders, and creative visionaries through curated weekly events, workshops, and networking sessions.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Why Page (#why) - Image left hand side, text right -->
+    <section id="why" class="py-20 px-6 md:px-12 bg-[#efe7db] border-y border-[#e2d8cc]">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <!-- Left hand side: Image -->
+            <div class="w-full h-[380px] md:h-[450px] rounded-3xl overflow-hidden shadow-xl border-4 border-white">
+                <img src="https://placehold.co/800x600/D96B43/F7F2EB?text=Why+We+Do+It" alt="Why Image" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x600/221E1D/F7F2EB?text=Image+Placeholder'">
+            </div>
+            <!-- Right hand side: Text -->
+            <div class="space-y-6">
+                <div class="inline-flex items-center gap-2 bg-primary/15 text-primary px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
+                    Our Philosophy
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-darktext">
+                    Built on Purpose, Driven by Passion
+                </h2>
+                <p class="text-darktext/80 leading-relaxed">
+                    We believe that environment deeply dictates output. By stripping away distractions and curating an aesthetic harmony of warmth, natural textures, and advanced utility, we empower individuals to perform at their absolute best.
+                </p>
+                <ul class="space-y-3 font-medium text-darktext/90">
+                    <li class="flex items-center gap-3">
+                        <span class="w-5 h-5 rounded-full bg-secondary text-white flex items-center justify-center text-xs">✓</span>
+                        <span>Zero compromise on build quality and ergonomics</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <span class="w-5 h-5 rounded-full bg-secondary text-white flex items-center justify-center text-xs">✓</span>
+                        <span>Inclusive spaces designed for diverse collaborative styles</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <span class="w-5 h-5 rounded-full bg-secondary text-white flex items-center justify-center text-xs">✓</span>
+                        <span>Continuous feedback loops to improve daily operations</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Culture Page (#culture) - 2 smaller images (one top right, one bottom left), text in between -->
+    <section id="culture" class="py-24 px-6 md:px-12 max-w-6xl mx-auto relative">
+        <div class="text-center max-w-xl mx-auto mb-16">
+            <span class="text-xs uppercase tracking-wider text-secondary font-bold bg-secondary/10 px-3 py-1 rounded-full">Community & Vibe</span>
+            <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-darktext mt-3">
+                Our Living Culture
+            </h2>
+            <p class="text-darktext/70 mt-2">A balanced lifestyle where camaraderie, wellness, and ambition intersect.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center relative">
+            <!-- Top Right Image for desktop / First item on mobile -->
+            <div class="lg:absolute lg:top-[-20px] lg:right-[-20px] lg:w-72 h-56 rounded-2xl overflow-hidden shadow-xl border-4 border-white transform lg:rotate-3 hover:rotate-0 transition-transform">
+                <img src="https://placehold.co/650x450/DDAB09/F7F2EB?text=Culture+Top+Right" alt="Culture Top Right" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x400/221E1D/F7F2EB?text=Culture+Image'">
+            </div>
+
+            <!-- Center text block -->
+            <div class="lg:col-span-2 bg-white p-8 md:p-12 rounded-3xl shadow-lg border border-[#e2d8cc] relative z-10 space-y-6">
+                <h3 class="text-2xl font-bold text-darktext">Fostering Connection Beyond the Desk</h3>
+                <p class="text-darktext/80 leading-relaxed">
+                    Culture isn’t just a buzzword here—it's woven into every morning coffee session, every impromptu whiteboard brainstorming sprint, and every Friday community retrospective. We champion open minds, respect for individual well-being, and relentless curiosity.
+                </p>
+                <div class="flex flex-wrap gap-3 pt-2">
+                    <span class="bg-basebg text-darktext px-4 py-1.5 rounded-full text-xs font-semibold border border-[#e2d8cc]">#OpenCommunity</span>
+                    <span class="bg-basebg text-darktext px-4 py-1.5 rounded-full text-xs font-semibold border border-[#e2d8cc]">#WellnessFirst</span>
+                    <span class="bg-basebg text-darktext px-4 py-1.5 rounded-full text-xs font-semibold border border-[#e2d8cc]">#CreativeFreedom</span>
+                </div>
+            </div>
+
+            <div class="lg:absolute lg:bottom-[-20px] lg:left-[-20px] lg:w-72 h-56 rounded-2xl overflow-hidden shadow-xl border-4 border-white transform lg:-rotate-3 hover:rotate-0 transition-transform">
+                <img src="https://placehold.co/650x450/0B5D67/F7F2EB?text=Culture+Bottom+Left" alt="Culture Bottom Left" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x400/221E1D/F7F2EB?text=Culture+Image'">
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Text Page (#text-section) - Just text, centered -->
+    <section id="text-section" class="py-24 px-6 md:px-12 bg-[#efe7db] border-y border-[#e2d8cc]">
+        <div class="max-w-3xl mx-auto text-center space-y-6">
+            <span class="text-xs uppercase tracking-wider text-primary font-bold bg-primary/10 px-3 py-1 rounded-full">Our Core Manifesto</span>
+            <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight text-darktext leading-tight">
+                "Simplicity is the ultimate sophistication when paired with profound purpose."
+            </h2>
+            <div class="w-16 h-1 bg-primary mx-auto my-6 rounded-full"></div>
+            <p class="text-lg md:text-xl text-darktext/80 leading-relaxed font-light">
+                We envision a future where work environments amplify human potential rather than draining it. By removing friction, honoring aesthetic tranquility, and centering accessibility, we invite you to build what comes next with absolute clarity and peace of mind.
+            </p>
+            <p class="text-sm font-semibold text-secondary uppercase tracking-widest pt-4">
+                — The Harmonic Horizons Team
+            </p>
+        </div>
+    </section>
+
+    <!-- 8. Footer (#footer) -->
+    <footer id="footer" class="bg-darktext text-white py-16 px-6 md:px-12">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-white/10">
+            <div class="space-y-4 md:col-span-1">
+                <a href="#hero" class="text-xl font-bold tracking-tight text-white flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-primary inline-block"></span>
+                    <span>Horizon<span class="text-primary">.</span></span>
+                </a>
+                <p class="text-sm text-white/70 leading-relaxed">
+                    Crafting immersive environments, thoughtful experiences, and modern architectural spaces for future-forward teams.
+                </p>
+            </div>
+
+            <div class="space-y-3">
+                <h4 class="text-sm font-bold uppercase tracking-wider text-midtone">Navigation</h4>
+                <ul class="space-y-2 text-sm text-white/70">
+                    <li><a href="#hero" class="hover:text-primary transition-colors">Home Hero</a></li>
+                    <li><a href="#location" class="hover:text-primary transition-colors">Location Map</a></li>
+                    <li><a href="#reasons" class="hover:text-primary transition-colors">Key Reasons</a></li>
+                    <li><a href="#why" class="hover:text-primary transition-colors">Why Page</a></li>
+                </ul>
+            </div>
+
+            <div class="space-y-3">
+                <h4 class="text-sm font-bold uppercase tracking-wider text-midtone">Exploration</h4>
+                <ul class="space-y-2 text-sm text-white/70">
+                    <li><a href="#culture" class="hover:text-primary transition-colors">Culture & Vibe</a></li>
+                    <li><a href="#text-section" class="hover:text-primary transition-colors">Vision Manifesto</a></li>
+                    <li><a href="#hero" class="hover:text-primary transition-colors">Get Started</a></li>
+                </ul>
+            </div>
+
+            <div class="space-y-3">
+                <h4 class="text-sm font-bold uppercase tracking-wider text-midtone">Stay Connected</h4>
+                <p class="text-xs text-white/70">Receive updates on our upcoming expansions and community events.</p>
+                <div class="flex items-center gap-2 pt-2">
+                    <input type="email" placeholder="Enter your email" class="bg-white/10 border border-white/20 text-white placeholder-white/40 text-xs px-3.5 py-2 rounded-lg focus:outline-none focus:border-primary flex-1">
+                    <button onclick="alertBox('Thank you for subscribing!')" class="bg-primary hover:bg-[#b85633] text-white text-xs font-semibold px-4 py-2 rounded-lg transition-colors">Join</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-white/50">
+            <p>&copy; 2026 Harmonic Horizons. All rights reserved.</p>
+            <div class="flex gap-6 mt-4 md:mt-0">
+                <a href="#hero" class="hover:text-white transition-colors">Privacy Policy</a>
+                <a href="#hero" class="hover:text-white transition-colors">Terms of Service</a>
+                <a href="#hero" class="hover:text-white transition-colors">Security</a>
+            </div>
+        </div>
+    </footer>
+
+    <div id="custom-modal" class="hidden fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-basebg text-darktext p-6 rounded-2xl max-w-sm w-full shadow-2xl border border-[#e2d8cc] text-center space-y-4">
+            <h3 id="modal-title" class="text-lg font-bold">Notification</h3>
+            <p id="modal-message" class="text-sm text-darktext/80">Message content here.</p>
+            <button onclick="closeAlertBox()" class="bg-primary text-white text-sm font-semibold px-6 py-2 rounded-xl shadow hover:bg-[#b85633] transition-colors">Got it</button>
+        </div>
+    </div>
+
+    <script>
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 40) {
+                navbar.classList.add('bg-[#F7F2EB]/90', 'backdrop-blur-md', 'shadow-sm', 'py-3');
+                navbar.classList.remove('bg-transparent', 'py-4');
+            } else {
+                navbar.classList.remove('bg-[#F7F2EB]/90', 'backdrop-blur-md', 'shadow-sm', 'py-3');
+                navbar.classList.add('bg-transparent', 'py-4');
+            }
+        });
+
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        function alertBox(message) {
+            document.getElementById('modal-message').innerText = message;
+            document.getElementById('custom-modal').classList.remove('hidden');
+        }
+
+        function closeAlertBox() {
+            document.getElementById('custom-modal').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
